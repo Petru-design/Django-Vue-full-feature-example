@@ -9,7 +9,8 @@ r = router.Router(appname='vuetest',
 
 # app.add_children(coaches, specifi_coach, register, request_messages)
 
-r.register([views.App, views.TheHeader])
+r.register([views.App, views.TheHeader, views.BaseCard, views.BaseButton,
+            views.BaseBadge])
 
 urlpatterns = [
     # path('', views.base_component),

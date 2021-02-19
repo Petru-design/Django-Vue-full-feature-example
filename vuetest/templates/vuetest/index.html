@@ -21,7 +21,7 @@
             const app = Vue.createApp({
                 delimiters: ['[[',']]'],
                 template: `<router-view></router-view>`,
-                
+
                 {% if redirect %}
                     mounted() {
                       this.$router.push('{{redirect}}')
@@ -32,10 +32,14 @@
             {% include "vuetest/router.js" %}
             
             app.mixin({ delimiters: ['[[',']]'] });
-            // app.component('base-modal', Vue.defineAsyncComponent(() => loadModule('/components/BaseModal.vue', options)))
+            
             app.use(store)
             app.use(router)
-            
+
+            app.component('base-card', Vue.defineAsyncComponent(() => loadModule('/components/BaseCard.vue', options)))
+            app.component('base-button', Vue.defineAsyncComponent(() => loadModule('/components/BaseButton.vue', options)))
+            app.component('base-badge', Vue.defineAsyncComponent(() => loadModule('/components/BaseBadge.vue', options)))
+
             app.mount('#app');
         </script>
     </body>

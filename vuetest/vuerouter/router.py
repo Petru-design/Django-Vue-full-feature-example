@@ -75,21 +75,25 @@ class Route():
         return urls
 
     def get_redirect(self, parent=None, redirect_view=None):
-        children = self.children
+        if self.add_route:
+            children = self.children
 
-        if parent:
-            self.redirect = parent + "/" + self.vue_path
+            if parent:
+                self.redirect = parent + "/" + self.vue_path
+            else:
+                self.redirect = self.vue_path[1:]
+
+            urls = []
+            for c in children:
+                urls += c.get_redirect(parent=self.redirect,
+                                       redirect_view=redirect_view)
+
+            own = path(self.redirect, redirect_view)
+            urls.append(own)
+            return urls
         else:
-            self.redirect = self.vue_path[1:]
-
-        urls = []
-        for c in children:
-            urls += c.get_redirect(parent=self.redirect,
-                                   redirect_view=redirect_view)
-
-        own = path(self.redirect, redirect_view)
-        urls.append(own)
-        return urls
+            return []
+        
 
     def get_vroute(self, appname=None):
         if self.add_route:

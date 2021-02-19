@@ -83,6 +83,27 @@ class App(router.Route):
                       context={})
 
 
+class BaseCard(router.Route):
+    pyhton_path = 'components/BaseCard.vue'
+    python_name = 'base-card'
+    template = 'vuetest/components/ui/BaseCard.vue'
+    add_route = False
+
+
+class BaseButton(router.Route):
+    pyhton_path = 'components/BaseButton.vue'
+    python_name = 'base-button'
+    template = 'vuetest/components/ui/BaseButton.vue'
+    add_route = False
+
+
+class BaseBadge(router.Route):
+    pyhton_path = 'components/BaseBadge.vue'
+    python_name = 'base-badge'
+    template = 'vuetest/components/ui/BaseBadge.vue'
+    add_route = False
+
+
 def load_component(request, name):
     print(name)
     color = 'blue'
