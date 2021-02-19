@@ -10,7 +10,6 @@ def base_component(request, *args, **kwargs):
     redirect = "/".join(redirect[1:])
     redirect = "/" + redirect
     # redirect = None
-
     return render(request,
                   'vuetest/index.html',
                   context={'redirect': redirect,
